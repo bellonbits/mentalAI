@@ -26,8 +26,6 @@
             --input-bg: #f8f6fd;
             --card-bg: #ffffff;
             --hover-color: rgba(124, 92, 219, 0.05);
-            --sidebar-width: 250px;
-            --sidebar-collapsed-width: 60px;
         }
         
         /* Dark theme */
@@ -65,205 +63,24 @@
             flex-direction: column;
             color: var(--text-color);
             transition: var(--transition);
+            overscroll-behavior: none;
         }
         
         .app-container {
-            max-width: 1200px;
             width: 100%;
-            margin: 0 auto;
-            border-radius: 24px;
+            height: 100vh;
+            margin: 0;
             overflow: hidden;
             background-color: var(--chat-bg);
-            box-shadow: var(--box-shadow);
             display: flex;
-            height: 100vh;
+            flex-direction: column;
             position: relative;
             transition: var(--transition);
-            border: 1px solid var(--border-color);
-        }
-        
-        /* Sidebar styles */
-        .sidebar {
-            width: var(--sidebar-collapsed-width);
-            background-color: var(--primary-dark);
-            color: white;
-            transition: var(--transition);
-            position: relative;
-            z-index: 10;
-            overflow: hidden;
-            height: 100%;
-        }
-        
-        .sidebar.expanded {
-            width: var(--sidebar-width);
-        }
-        
-        .sidebar-toggle {
-            position: absolute;
-            top: 1rem;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            z-index: 2;
-        }
-
-        .sidebar-toggle:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .sidebar-header {
-            padding: 1.5rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .sidebar-header .nova-logo {
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-        
-        .sidebar-header .nova-title {
-            white-space: nowrap;
-            overflow: hidden;
-        }
-        
-        .sidebar-header .nova-title h1 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 2px;
-            letter-spacing: 0.5px;
-        }
-        
-        .sidebar-header .nova-title p {
-            font-size: 0.75rem;
-            opacity: 0.9;
-        }
-        
-        .sidebar-content {
-            padding: 1rem 0;
-            height: calc(100% - 90px);
-            overflow-y: auto;
-        }
-        
-        .sidebar-section {
-            margin-bottom: 1.5rem;
-        }
-        
-        .sidebar-section-title {
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.7;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        .sidebar-menu-item {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            gap: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-            border-left: 3px solid transparent;
-        }
-        
-        .sidebar-menu-item:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-left-color: var(--primary-light);
-        }
-        
-        .sidebar-menu-item i {
-            font-size: 1.1rem;
-            width: 24px;
-            text-align: center;
-        }
-        
-        .sidebar-menu-item span {
-            font-size: 0.9rem;
-            white-space: nowrap;
-            transition: var(--transition);
-            opacity: 0;
-            width: 0;
-        }
-        
-        .sidebar.expanded .sidebar-menu-item span {
-            opacity: 1;
-            width: auto;
-        }
-        
-        .sidebar-footer {
-            padding: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .sidebar-footer .theme-switch {
-            width: 36px;
-            height: 36px;
-            border-radius: 12px;
-            background-color: rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .sidebar-footer .theme-switch:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-        
-        .sidebar-footer .profile-btn {
-            opacity: 0;
-            flex: 1;
-            padding: 0.5rem;
-            transition: var(--transition);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            background-color: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: 0;
-        }
-        
-        .sidebar.expanded .sidebar-footer .profile-btn {
-            opacity: 1;
-            width: auto;
         }
         
         /* Header */
         .chat-header {
-            padding: 1rem 1.5rem;
+            padding: 0.75rem 1rem;
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: white;
             display: flex;
@@ -272,6 +89,7 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            z-index: 10;
         }
         
         .chat-header::before {
@@ -294,9 +112,9 @@
         }
         
         .header-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
             background-color: rgba(255, 255, 255, 0.15);
             border: none;
             color: white;
@@ -311,18 +129,37 @@
         
         .header-btn:hover {
             background-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
+        }
+        
+        .nova-branding {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nova-logo {
+            width: 32px;
+            height: 32px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        
+        .nova-title h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .nova-title p {
+            font-size: 0.7rem;
+            opacity: 0.9;
         }
         
         /* Main Chat Area */
-        .chat-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            height: 100%;
-        }
-        
         .chat-area {
             flex: 1;
             display: flex;
@@ -332,67 +169,20 @@
             transition: var(--transition);
         }
         
-        .mood-tracker {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background-color: var(--card-bg);
-            padding: 0.75rem 1rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(124, 92, 219, 0.1);
-            display: flex;
-            align-items: center;
-            font-size: 0.85rem;
-            color: var(--soft-text);
-            gap: 10px;
-            z-index: 5;
-            transition: var(--transition);
-            transform: translateY(0);
-            border: 1px solid var(--border-color);
-        }
-        
-        .mood-tracker.hidden {
-            transform: translateY(-100px);
-            opacity: 0;
-        }
-        
-        .mood-buttons {
-            display: flex;
-            gap: 8px;
-        }
-        
-        .mood-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            padding: 0;
-        }
-        
-        .mood-btn:hover {
-            transform: scale(1.3);
-        }
-        
-        .mood-btn.active {
-            transform: scale(1.3);
-            filter: drop-shadow(0 0 5px var(--primary-light));
-        }
-        
         .chat-messages {
             flex: 1;
-            padding: 1.5rem 1rem;
+            padding: 1rem 0.75rem;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 1.25rem;
+            gap: 1rem;
             scroll-behavior: smooth;
             transition: var(--transition);
         }
         
         /* Custom scrollbar */
         .chat-messages::-webkit-scrollbar {
-            width: 6px;
+            width: 4px;
         }
         
         .chat-messages::-webkit-scrollbar-track {
@@ -409,19 +199,19 @@
         }
         
         .message {
-            max-width: 75%;
-            padding: 1rem 1.25rem;
-            border-radius: 18px;
+            max-width: 85%;
+            padding: 0.8rem 1rem;
+            border-radius: 16px;
             line-height: 1.5;
             position: relative;
             font-size: 0.9rem;
             transition: var(--transition);
-            animation: fadeIn 0.4s ease;
+            animation: fadeIn 0.3s ease;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
@@ -442,7 +232,7 @@
         }
         
         .message-time {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--soft-text);
             margin-top: 0.5rem;
             text-align: right;
@@ -457,15 +247,15 @@
         }
         
         .message-avatar {
-            width: 28px;
-            height: 28px;
-            border-radius: 10px;
+            width: 24px;
+            height: 24px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 0.75rem;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-size: 0.7rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
         }
         
@@ -477,44 +267,18 @@
             background-color: var(--secondary-color);
         }
         
-        .suggestions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-        
-        .suggestion-btn {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 0.5rem 0.75rem;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: var(--transition);
-            color: var(--primary-color);
-        }
-        
-        .suggestion-btn:hover {
-            background-color: var(--primary-light);
-            border-color: var(--primary-light);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(124, 92, 219, 0.2);
-        }
-        
         .typing {
             display: flex;
             align-items: center;
             gap: 0.25rem;
-            margin-left: 1rem;
+            margin-left: 0.75rem;
             opacity: 0.8;
             animation: fadeIn 0.3s ease;
         }
         
         .typing span {
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             background-color: var(--primary-color);
             border-radius: 50%;
             display: inline-block;
@@ -531,24 +295,25 @@
         
         @keyframes typing {
             0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-5px); }
+            30% { transform: translateY(-4px); }
         }
         
         /* Input Area */
         .chat-input {
-            padding: 1rem;
+            padding: 0.75rem 0.75rem 1rem;
             border-top: 1px solid var(--border-color);
             background-color: var(--chat-bg);
             transition: var(--transition);
             position: relative;
+            z-index: 5;
         }
         
         .input-container {
             display: flex;
             align-items: flex-end;
             background-color: var(--input-bg);
-            border-radius: 22px;
-            padding: 0.6rem 1rem;
+            border-radius: 18px;
+            padding: 0.5rem 0.75rem;
             transition: var(--transition);
             box-shadow: 0 4px 15px rgba(124, 92, 219, 0.05);
             border: 1px solid var(--border-color);
@@ -566,11 +331,11 @@
             background: transparent;
             resize: none;
             min-height: 24px;
-            max-height: 120px;
-            padding: 0.25rem 0;
+            max-height: 100px;
+            padding: 0.15rem 0;
             outline: none;
             font-size: 0.9rem;
-            line-height: 1.5;
+            line-height: 1.4;
             margin-right: 8px;
             color: var(--text-color);
             transition: var(--transition);
@@ -616,7 +381,6 @@
         
         .send-btn:hover {
             background-color: var(--primary-dark);
-            transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(124, 92, 219, 0.3);
         }
         
@@ -624,11 +388,13 @@
         .toast-container {
             position: fixed;
             top: 1rem;
-            right: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 1000;
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
+            width: 90%;
             max-width: 280px;
         }
         
@@ -646,8 +412,8 @@
         }
         
         @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         
         @keyframes fadeOut {
@@ -692,171 +458,98 @@
             100% { transform: scaleY(0.1); }
         }
         
-        /* Animations */
+        /* Theme Switch */
+        .theme-switch {
+            position: fixed;
+            bottom: 5.5rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(124, 92, 219, 0.3);
+            z-index: 50;
+            transition: var(--transition);
+        }
+        
+        .theme-switch:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Loading indicator */
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
         }
         
-        @keyframes wobble {
-            0% { transform: translateX(0); }
-            15% { transform: translateX(-5px) rotate(-5deg); }
-            30% { transform: translateX(5px) rotate(5deg); }
-            45% { transform: translateX(-5px) rotate(-3deg); }
-            60% { transform: translateX(5px) rotate(3deg); }
-            75% { transform: translateX(-5px) rotate(-1deg); }
-            100% { transform: translateX(0); }
+        .loading-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 1.5s infinite ease-in-out;
+            z-index: 1000;
+            color: white;
+            font-size: 1.5rem;
         }
         
-        /* Media Queries */
-        @media (min-width: 768px) {
-            .app-container {
-                width: 90%;
-                height: calc(100vh - 2rem);
-                margin: 1rem auto;
-                border-radius: 24px;
-            }
-        }
-        
-        @media (max-width: 767px) {
-            .app-container {
-                width: 100%;
-                height: 100vh;
-                margin: 0;
-                border-radius: 0;
-                border: none;
-            }
-            
-            .sidebar {
-                position: absolute;
-                height: 100%;
-                z-index: 100;
-                transform: translateX(-100%);
-            }
-            
-            .sidebar.expanded {
-                transform: translateX(0);
-            }
-            
-            .sidebar-toggle {
-                right: -15px;
-                background: var(--primary-dark);
-            }
-            
-            .sidebar.expanded .sidebar-toggle {
-                right: 15px;
-            }
-            
+        /* For very small screens */
+        @media (max-width: 360px) {
             .chat-header {
-                padding: 0.75rem 1rem;
+                padding: 0.6rem 0.7rem;
             }
             
-            .message {
-                max-width: 90%;
-                padding: 0.75rem 1rem;
-                font-size: 0.85rem;
-            }
-            
-            .message-avatar {
-                width: 24px;
-                height: 24px;
-                font-size: 0.7rem;
-            }
-            
-            .chat-messages {
-                padding: 1rem 0.75rem;
-            }
-            
-            .mood-tracker {
-                top: auto;
-                bottom: 4.5rem;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: 0.75rem;
-                padding: 0.5rem 0.75rem;
-                border-radius: 14px;
-            }
-            
-            .mood-tracker.hidden {
-                transform: translateX(-50%) translateY(100px);
-            }
-            
-            .mood-btn {
+            .nova-title h1 {
                 font-size: 1rem;
             }
             
-            .input-container {
-                padding: 0.5rem 0.75rem;
-            }
-            
-            .input-container textarea {
-                font-size: 0.85rem;
-            }
-            
-            .input-action-btn {
-                width: 28px;
-                height: 28px;
-                font-size: 0.8rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .chat-header {
-                padding: 0.6rem 0.75rem;
-            }
-            
-            .mood-tracker {
-                padding: 0.5rem 0.6rem;
-                font-size: 0.7rem;
-                gap: 6px;
-            }
-            
-            .mood-buttons {
-                gap: 6px;
-            }
-            
-            .mood-btn {
-                font-size: 0.9rem;
-            }
-            
-            .message {
-                max-width: 95%;
-                padding: 0.7rem 0.9rem;
-                font-size: 0.8rem;
-            }
-            
-            .message-avatar {
-                width: 22px;
-                height: 22px;
+            .nova-title p {
                 font-size: 0.65rem;
             }
             
-            .chat-input {
-                padding: 0.75rem;
-            }
-            
-            .input-container {
-                padding: 0.4rem 0.7rem;
-                border-radius: 18px;
-            }
-            
-            .input-container textarea {
-                font-size: 0.8rem;
-                min-height: 20px;
-            }
-            
-            .input-action-btn {
-                width: 26px;
-                height: 26px;
-                font-size: 0.75rem;
+            .nova-logo {
+                width: 28px;
+                height: 28px;
+                font-size: 1rem;
             }
             
             .header-btn {
                 width: 28px;
                 height: 28px;
-                font-size: 0.75rem;
-                border-radius: 8px;
+                font-size: 0.8rem;
+            }
+            
+            .message {
+                max-width: 90%;
+                padding: 0.7rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            
+            .input-container {
+                padding: 0.4rem 0.6rem;
+            }
+            
+            .input-container textarea {
+                font-size: 0.85rem;
+            }
+            
+            .input-action-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -866,13 +559,28 @@
     <div class="toast-container" id="toast-container"></div>
     
     <div class="app-container">
-        <!-- Sidebar -->
-        <div class="sidebar" id="sidebar">
-            <button class="sidebar-toggle" id="sidebar-toggle">
-                <i class="fas fa-angle-right"></i>
-            </button>
-            
-            <div class="sidebar-header">
+        <!-- Sound Visualizer for message reception -->
+        <div class="sound-visualizer" id="sound-visualizer" style="display: none;">
+            <div class="sound-bar"></div>
+            <div class="sound-bar"></div>
+            <div class="sound-bar"></div>
+            <div class="sound-bar"></div>
+            <div class="sound-bar"></div>
+            <div class="sound-bar"></div>
+            <div class="sound-bar"></div>
+            <div class="sound-bar"></div>
+            <div class="sound-bar"></div>
+            <div class="sound-bar"></div>
+        </div>
+        
+        <!-- Loading indicator -->
+        <div class="loading-indicator" id="loading-indicator" style="display: none;">
+            <i class="fas fa-brain"></i>
+        </div>
+        
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="nova-branding">
                 <div class="nova-logo">
                     <i class="fas fa-brain"></i>
                 </div>
@@ -881,932 +589,433 @@
                     <p>Your mental health companion</p>
                 </div>
             </div>
-            
-            <div class="sidebar-content">
-                <div class="sidebar-section">
-                    <div class="sidebar-section-title">Comfort Tools</div>
-                    <div class="sidebar-menu-item" id="breathing-exercise">
-                        <i class="fas fa-wind"></i>
-                        <span>Breathing Exercise</span>
-                    </div>
-                    <div class="sidebar-menu-item" id="relaxing-sounds">
-                        <i class="fas fa-music"></i>
-                        <span>Relaxing Sounds</span>
-                    </div>
-                    <div class="sidebar-menu-item" id="grounding-exercise">
-                        <i class="fas fa-tree"></i>
-                        <span>Grounding Exercise</span>
-                    </div>
-                    <div class="sidebar-menu-item" id="guided-meditation">
-                        <i class="fas fa-om"></i>
-                        <span>Guided Meditation</span>
-                    </div>
-                </div>
-                
-                <div class="sidebar-section">
-                    <div class="sidebar-section-title">Resources</div>
-                    <div class="sidebar-menu-item">
-                        <i class="fas fa-book"></i>
-                        <span>Mental Health Library</span>
-                    </div>
-                    <div class="sidebar-menu-item">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Progress Tracker</span>
-                    </div>
-                    <div class="sidebar-menu-item">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Mood Calendar</span>
-                    </div>
-                </div>
-                
-                <div class="sidebar-section">
-                    <div class="sidebar-section-title">Settings</div>
-                    <div class="sidebar-menu-item" id="clear-chat">
-                        <i class="fas fa-broom"></i>
-                        <span>Clear Chat</span>
-                    </div>
-                    <div class="sidebar-menu-item">
-                        <i class="fas fa-cog"></i>
-                        <span>Preferences</span>
-                    </div>
-                    <div class="sidebar-menu-item">
-                        <i class="fas fa-question-circle"></i>
-                        <span>Help & Support</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="sidebar-footer">
-                <div class="theme-switch" id="theme-switch">
+            <div class="header-actions">
+                <button class="header-btn" title="Clear Chat" id="clear-chat">
+                    <i class="fas fa-broom"></i>
+                </button>
+                <button class="header-btn" id="theme-toggle" title="Toggle Theme">
                     <i class="fas fa-moon"></i>
-                </div>
-                <button class="profile-btn" id="profile-btn">
-                    <i class="fas fa-user"></i>
-                    <span>Profile</span>
                 </button>
             </div>
         </div>
-        
+
         <!-- Main Chat Area -->
-        <div class="chat-container">
-            <!-- Chat Header -->
-            <div class="chat-header">
-                <div class="header-info">
-                    <h2>Vivian</h2>
-                </div>
-                <div class="header-actions">
-                    <button class="header-btn" id="refresh-btn" title="Refresh">
-                        <i class="fas fa-sync-alt"></i>
-                    </button>
-                    <button class="header-btn" id="voice-btn" title="Voice Mode">
-                        <i class="fas fa-microphone"></i>
-                    </button>
-                    <button class="header-btn" id="minimize-btn" title="Minimize">
-                        <i class="fas fa-minus"></i>
-                    </button>
+        <div class="chat-area">
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be added here dynamically -->
+                <!-- Example message structure -->
+                <div class="message message-assistant">
+                    <div class="message-content">
+                        Hello! I'm Vivian, your mental health companion. How can I help you today?
+                    </div>
+                    <div class="message-info">
+                        <div class="message-avatar assistant-avatar">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="message-time">Just now</div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Sound visualizer -->
-            <div class="sound-visualizer" id="sound-visualizer" style="display: none;">
-                <!-- Generated dynamically by JavaScript -->
-            </div>
-            
-            <!-- Chat Area -->
-            <div class="chat-area">
-                <!-- Mood Tracker -->
-                <div class="mood-tracker" id="mood-tracker">
-                    <span>How are you feeling today?</span>
-                    <div class="mood-buttons">
-                        <button class="mood-btn" data-mood="happy">😊</button>
-                        <button class="mood-btn" data-mood="neutral">😐</button>
-                        <button class="mood-btn" data-mood="sad">😔</button>
-                        <button class="mood-btn" data-mood="anxious">😰</button>
-                        <button class="mood-btn" data-mood="angry">😠</button>
-                    </div>
-                </div>
-                
-                <!-- Chat Messages -->
-                <div class="chat-messages" id="chat-messages">
-                    <!-- Messages will be added here dynamically -->
-                    <div class="message message-assistant" id="welcome-message">
-                        <div>Hi there! I'm Vivian, your mental health companion. How are you feeling today?</div>
-                        <div class="message-info">
-                            <div class="message-avatar assistant-avatar">V</div>
-                            <div class="message-time">Just now</div>
-                        </div>
-                        <div class="suggestions">
-                            <button class="suggestion-btn">I'm feeling anxious</button>
-                            <button class="suggestion-btn">I need to relax</button>
-                            <button class="suggestion-btn">I'm feeling down</button>
-                            <button class="suggestion-btn">Tell me about yourself</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Typing indicator -->
-                <div class="typing" id="typing-indicator" style="display: none;">
-                    <div class="message-avatar assistant-avatar">V</div>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                
-                <!-- Chat Input -->
-                <div class="chat-input">
-                    <div class="input-container">
-                        <textarea id="message-input" placeholder="Type your message here..." rows="1"></textarea>
-                        <div class="input-actions">
-                            <button class="input-action-btn" id="attachment-btn" title="Attach file">
-                                <i class="fas fa-paperclip"></i>
-                            </button>
-                            <button class="input-action-btn" id="emoji-btn" title="Insert emoji">
-                                <i class="fas fa-smile"></i>
-                            </button>
-                            <button class="input-action-btn send-btn" id="send-btn" title="Send message">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
+            <!-- Chat Input -->
+            <div class="chat-input">
+                <div class="input-container">
+                    <textarea id="message-input" placeholder="Type your message here..." rows="1"></textarea>
+                    <div class="input-actions">
+                        <button class="input-action-btn" title="Voice Input" id="voice-input">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button class="input-action-btn send-btn" id="send-btn" title="Send Message">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Theme Switch -->
+        <div class="theme-switch" id="theme-switch">
+            <i class="fas fa-sun"></i>
         </div>
     </div>
 
     <script>
-// API Functions
-// API Functions
+  // API connection setup
 const API_BASE_URL = window.location.origin; // Automatically use the same host
+let userId = localStorage.getItem('vivian_user_id') || generateUserId();
 
-// Helper functions
-function generateRandomUserId() {
-    return 'user_' + Math.random().toString(36).substring(2, 15);
+// Generate a unique user ID if none exists
+function generateUserId() {
+    const newId = 'user_' + Math.random().toString(36).substring(2, 15);
+    localStorage.setItem('vivian_user_id', newId);
+    return newId;
 }
 
-function formatTimestamp() {
-    const now = new Date();
-    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-}
-
-function showToast(message, type = 'info') {
-    const toast = document.createElement('div');
-    toast.className = `toast toast-${type}`;
-    toast.innerHTML = `
-        <div class="toast-content">
-            <i class="fas ${type === 'info' ? 'fa-info-circle' : 'fa-exclamation-circle'}"></i>
-            <span>${message}</span>
-        </div>
-    `;
-    document.getElementById('toast-container').appendChild(toast);
-    setTimeout(() => {
-        toast.classList.add('toast-fade-out');
-        setTimeout(() => {
-            toast.remove();
-        }, 300);
-    }, 3000);
-}
-
-// Chat functionality
-class VivianChat {
-    constructor() {
-        this.userId = localStorage.getItem('userId') || generateRandomUserId();
-        this.userName = localStorage.getItem('userName') || 'there';
-        this.darkMode = localStorage.getItem('darkMode') === 'true';
-        this.messages = JSON.parse(localStorage.getItem('chatMessages') || '[]');
-        
-        // DOM elements
-        this.chatMessages = document.getElementById('chat-messages');
-        this.messageInput = document.getElementById('message-input');
-        this.sendBtn = document.getElementById('send-btn');
-        this.clearChatBtn = document.getElementById('clear-chat');
-        this.profileBtn = document.getElementById('profile-btn');
-        this.themeSwitch = document.getElementById('theme-switch');
-        this.voiceInputBtn = document.getElementById('voice-input');
-        
-        // Comfort zone elements
-        this.breathingExerciseBtn = document.getElementById('breathing-exercise');
-        this.relaxingSoundsBtn = document.getElementById('relaxing-sounds');
-        this.groundingExerciseBtn = document.getElementById('grounding-exercise');
-        this.guidedMeditationBtn = document.getElementById('guided-meditation');
-        
-        // Mood tracker
-        this.moodButtons = document.querySelectorAll('.mood-btn');
-        
-        // Initialize
-        this.initializeApp();
+// Basic functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Theme toggle
+    const themeSwitch = document.getElementById('theme-switch');
+    const themeToggle = document.getElementById('theme-toggle');
+    
+    // Load saved theme preference
+    if (localStorage.getItem('vivian_theme') === 'dark') {
+        document.body.classList.add('dark-theme');
+        themeSwitch.innerHTML = '<i class="fas fa-sun"></i>';
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     }
     
-    initializeApp() {
-        // Save userId
-        localStorage.setItem('userId', this.userId);
+    function toggleTheme() {
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        themeSwitch.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        localStorage.setItem('vivian_theme', isDark ? 'dark' : 'light');
+    }
+    
+    themeSwitch.addEventListener('click', toggleTheme);
+    themeToggle.addEventListener('click', toggleTheme);
+    
+    // Auto-resize textarea
+    const messageInput = document.getElementById('message-input');
+    
+    messageInput.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+    });
+    
+    // Send message on Enter (but allow Shift+Enter for new line)
+    messageInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+    
+    // Send message when clicking send button
+    const sendBtn = document.getElementById('send-btn');
+    sendBtn.addEventListener('click', sendMessage);
+    
+    // Clear chat
+    const clearChatBtn = document.getElementById('clear-chat');
+    clearChatBtn.addEventListener('click', function() {
+        const chatMessages = document.getElementById('chat-messages');
         
-        // Set up event listeners
-        this.setupEventListeners();
-        
-        // Load chat history
-        this.loadChatHistory();
-        
-        // Set theme
-        this.updateTheme();
-        
-        // Send welcome message if first time
-        if (this.messages.length === 0) {
-            this.addBotMessage("Hi there! I'm Vivian, your mental health companion. How are you feeling today?");
+        // Keep only the first welcome message
+        const welcomeMessage = chatMessages.querySelector('.message');
+        chatMessages.innerHTML = '';
+        if (welcomeMessage) {
+            chatMessages.appendChild(welcomeMessage);
         }
         
-        // Update profile
-        this.updateProfile();
-    }
+        // Clear local conversation history
+        localStorage.removeItem('vivian_conversation');
+        
+        // Show toast
+        showToast('Chat cleared', 'success');
+    });
     
-    setupEventListeners() {
-        // Send message on button click
-        this.sendBtn.addEventListener('click', () => this.sendMessage());
-        
-        // Send message on Enter key (but allow Shift+Enter for new line)
-        this.messageInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                this.sendMessage();
-            }
-            
-            // Auto-grow textarea
-            setTimeout(() => {
-                this.messageInput.style.height = 'auto';
-                this.messageInput.style.height = (this.messageInput.scrollHeight) + 'px';
-            }, 0);
-        });
-        
-        // Clear chat
-        this.clearChatBtn.addEventListener('click', () => this.clearChat());
-        
-        // Profile button
-        this.profileBtn.addEventListener('click', () => this.showProfileModal());
-        
-        // Theme switch
-        this.themeSwitch.addEventListener('click', () => {
-            this.darkMode = !this.darkMode;
-            localStorage.setItem('darkMode', this.darkMode);
-            this.updateTheme();
-        });
-        
-        // Voice input
-        this.voiceInputBtn.addEventListener('click', () => this.toggleVoiceInput());
-        
-        // Comfort zone buttons
-        this.breathingExerciseBtn.addEventListener('click', () => this.startBreathingExercise());
-        this.relaxingSoundsBtn.addEventListener('click', () => this.playRelaxingSounds());
-        this.groundingExerciseBtn.addEventListener('click', () => this.startGroundingExercise());
-        this.guidedMeditationBtn.addEventListener('click', () => this.startGuidedMeditation());
-        
-        // Mood buttons
-        this.moodButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const mood = button.getAttribute('data-mood');
-                this.trackMood(mood);
-            });
-        });
-    }
-    
-    updateTheme() {
-        if (this.darkMode) {
-            document.body.classList.add('dark-theme');
-            this.themeSwitch.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-            document.body.classList.remove('dark-theme');
-            this.themeSwitch.innerHTML = '<i class="fas fa-moon"></i>';
-        }
-    }
-    
-    loadChatHistory() {
-        // Clear chat area
-        this.chatMessages.innerHTML = '';
-        
-        // Add messages from history
-        this.messages.forEach(message => {
-            if (message.sender === 'user') {
-                this.addUserMessage(message.content, false);
-            } else {
-                this.addBotMessage(message.content, false);
+    // Update profile
+    const updateProfileBtn = document.getElementById('update-profile');
+    if (updateProfileBtn) {
+        updateProfileBtn.addEventListener('click', function() {
+            const nameInput = document.getElementById('profile-name');
+            if (nameInput && nameInput.value.trim()) {
+                updateProfile(nameInput.value.trim());
             }
         });
-        
-        // Scroll to bottom
-        this.scrollToBottom();
     }
     
-    addUserMessage(message, save = true) {
-        const messageEl = document.createElement('div');
-        messageEl.className = 'message user-message';
-        messageEl.innerHTML = `
-            <div class="message-content">
-                <p>${this.formatMessage(message)}</p>
-            </div>
-            <div class="message-timestamp">${formatTimestamp()}</div>
-        `;
-        this.chatMessages.appendChild(messageEl);
+    // Function to send a message
+    async function sendMessage() {
+        const messageInput = document.getElementById('message-input');
+        const message = messageInput.value.trim();
         
-        if (save) {
-            this.messages.push({
-                sender: 'user',
-                content: message,
-                timestamp: new Date().toISOString()
-            });
-            this.saveChatHistory();
-        }
-        
-        this.scrollToBottom();
-    }
-    
-    addBotMessage(message, save = true) {
-        // Show typing indicator
-        this.showTypingIndicator();
-        
-        // Simulate typing delay
-        setTimeout(() => {
-            // Remove typing indicator
-            this.removeTypingIndicator();
+        if (message) {
+            // Add user message
+            addMessage(message, 'user');
             
-            const messageEl = document.createElement('div');
-            messageEl.className = 'message bot-message';
-            messageEl.innerHTML = `
-                <div class="message-avatar">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <div class="message-bubble">
-                    <div class="message-content">
-                        <p>${this.formatMessage(message)}</p>
-                    </div>
-                    <div class="message-timestamp">${formatTimestamp()}</div>
-                </div>
-            `;
-            this.chatMessages.appendChild(messageEl);
+            // Clear input
+            messageInput.value = '';
+            messageInput.style.height = 'auto';
             
-            if (save) {
-                this.messages.push({
-                    sender: 'bot',
-                    content: message,
-                    timestamp: new Date().toISOString()
+            // Show typing indicator
+            showTypingIndicator();
+            
+            try {
+                // Send message to backend API
+                const response = await fetch(`${API_BASE_URL}/api/chat`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        user_id: userId,
+                        message: message
+                    })
                 });
-                this.saveChatHistory();
+                
+                if (!response.ok) {
+                    throw new Error('Failed to get response');
+                }
+                
+                const data = await response.json();
+                
+                // Hide typing indicator
+                hideTypingIndicator();
+                
+                // Add response to chat
+                addMessage(data.response, 'assistant');
+                
+                // Show suggestions if available
+                if (data.suggestions && data.suggestions.length > 0) {
+                    showSuggestions(data.suggestions);
+                }
+                
+                // Save conversation to local storage
+                saveConversation(message, data.response);
+                
+            } catch (error) {
+                console.error('Error sending message:', error);
+                hideTypingIndicator();
+                showToast('Error connecting to Vivian. Please try again.', 'error');
+                
+                // Fallback response
+                addMessage("I'm sorry, I'm having trouble connecting right now. Please try again in a moment.", 'assistant');
+            }
+        }
+    }
+    
+    // Function to update user profile
+    async function updateProfile(name) {
+        try {
+            const response = await fetch(`${API_BASE_URL}/api/profile`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user_id: userId,
+                    name: name
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to update profile');
             }
             
-            this.scrollToBottom();
-        }, 1000);
+            showToast('Profile updated successfully', 'success');
+            
+            // Update welcome message if it exists
+            const welcomeMessage = document.querySelector('.welcome-message');
+            if (welcomeMessage) {
+                welcomeMessage.textContent = `Hello, ${name}! How can I help you today?`;
+            }
+            
+        } catch (error) {
+            console.error('Error updating profile:', error);
+            showToast('Error updating profile', 'error');
+        }
     }
     
-    formatMessage(message) {
-        // Convert line breaks to <br>
-        return message.replace(/\n/g, '<br>');
-    }
-    
-    showTypingIndicator() {
-        const typingIndicator = document.createElement('div');
-        typingIndicator.className = 'message bot-message typing-indicator';
-        typingIndicator.innerHTML = `
-            <div class="message-avatar">
-                <i class="fas fa-brain"></i>
-            </div>
-            <div class="message-bubble">
-                <div class="typing-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+    // Function to add a message to the chat
+    function addMessage(text, sender) {
+        const chatMessages = document.getElementById('chat-messages');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', `message-${sender}`);
+        
+        const now = new Date();
+        const timeString = now.getHours().toString().padStart(2, '0') + ':' + 
+                           now.getMinutes().toString().padStart(2, '0');
+        
+        // Convert line breaks to <br> tags
+        const formattedText = text.replace(/\n/g, '<br>');
+        
+        messageElement.innerHTML = `
+            <div class="message-content">${formattedText}</div>
+            <div class="message-info">
+                <div class="message-avatar ${sender}-avatar">
+                    <i class="fas fa-${sender === 'user' ? 'user' : 'brain'}"></i>
                 </div>
+                <div class="message-time">${timeString}</div>
             </div>
         `;
-        this.chatMessages.appendChild(typingIndicator);
-        this.scrollToBottom();
+        
+        chatMessages.appendChild(messageElement);
+        
+        // Scroll to the bottom
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        // Play sound effect for new message
+        playMessageSound(sender);
     }
     
-    removeTypingIndicator() {
-        const typingIndicator = document.querySelector('.typing-indicator');
+    // Function to show typing indicator
+    function showTypingIndicator() {
+        const chatMessages = document.getElementById('chat-messages');
+        const typingElement = document.createElement('div');
+        typingElement.classList.add('typing');
+        typingElement.id = 'typing-indicator';
+        
+        typingElement.innerHTML = `
+            <span></span>
+            <span></span>
+            <span></span>
+        `;
+        
+        chatMessages.appendChild(typingElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // Function to hide typing indicator
+    function hideTypingIndicator() {
+        const typingIndicator = document.getElementById('typing-indicator');
         if (typingIndicator) {
             typingIndicator.remove();
         }
     }
     
-    scrollToBottom() {
-        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
-    }
-    
-    async sendMessage() {
-        const message = this.messageInput.value.trim();
-        if (!message) return;
+    // Function to show toast notification
+    function showToast(message, type = 'info') {
+        const toastContainer = document.getElementById('toast-container');
+        const toast = document.createElement('div');
+        toast.classList.add('toast', `toast-${type}`);
         
-        // Clear input
-        this.messageInput.value = '';
-        this.messageInput.style.height = 'auto';
+        let icon = 'info-circle';
+        if (type === 'success') icon = 'check-circle';
+        if (type === 'error') icon = 'exclamation-circle';
         
-        // Add user message to chat
-        this.addUserMessage(message);
-        
-        try {
-            // Show sound visualizer
-            document.getElementById('sound-visualizer').style.display = 'flex';
-            
-            // Send message to API
-            const response = await fetch(`${API_BASE_URL}/api/chat`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user_id: this.userId,
-                    message: message
-                })
-            });
-            
-            // Hide sound visualizer
-            document.getElementById('sound-visualizer').style.display = 'none';
-            
-            if (!response.ok) {
-                throw new Error('Failed to send message');
-            }
-            
-            const data = await response.json();
-            
-            // Add bot response to chat
-            this.addBotMessage(data.response);
-            
-            // Show suggested activities if any
-            if (data.suggestions && data.suggestions.length > 0) {
-                this.showSuggestions(data.suggestions);
-            }
-            
-        } catch (error) {
-            console.error('Error sending message:', error);
-            showToast('Failed to send message. Please try again.', 'error');
-            // Hide sound visualizer on error
-            document.getElementById('sound-visualizer').style.display = 'none';
-        }
-    }
-    
-    showSuggestions(suggestions) {
-        const suggestionsEl = document.createElement('div');
-        suggestionsEl.className = 'suggestions';
-        suggestionsEl.innerHTML = `
-            <div class="suggestions-title">Suggested activities:</div>
-            <div class="suggestions-list">
-                ${suggestions.map(suggestion => `
-                    <button class="suggestion-btn">${suggestion}</button>
-                `).join('')}
+        toast.innerHTML = `
+            <div class="toast-icon">
+                <i class="fas fa-${icon}"></i>
             </div>
+            <div class="toast-text">${message}</div>
         `;
-        this.chatMessages.appendChild(suggestionsEl);
         
-        // Add event listeners to suggestion buttons
-        suggestionsEl.querySelectorAll('.suggestion-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                this.messageInput.value = btn.textContent;
-                this.sendMessage();
-            });
+        toastContainer.appendChild(toast);
+        
+        // Remove toast after 3 seconds
+        setTimeout(() => {
+            toast.classList.add('toast-hide');
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        }, 3000);
+    }
+    
+    // Function to play message sound
+    function playMessageSound(sender) {
+        const visualizer = document.getElementById('sound-visualizer');
+        visualizer.style.display = 'flex';
+        
+        // Animate visualizer bars
+        const bars = visualizer.querySelectorAll('.sound-bar');
+        bars.forEach(bar => {
+            const delay = Math.random() * 0.5;
+            const duration = 0.3 + Math.random() * 0.5;
+            bar.style.animationDuration = `${duration}s`;
+            bar.style.animationDelay = `${delay}s`;
         });
         
-        this.scrollToBottom();
+        // Hide visualizer after animation
+        setTimeout(() => {
+            visualizer.style.display = 'none';
+        }, 800);
     }
     
-    saveChatHistory() {
-        localStorage.setItem('chatMessages', JSON.stringify(this.messages));
-    }
-    
-    clearChat() {
-        if (confirm('Are you sure you want to clear the chat history?')) {
-            this.messages = [];
-            this.saveChatHistory();
-            this.loadChatHistory();
-            showToast('Chat history cleared');
+    // Function to show suggested responses
+    function showSuggestions(suggestions) {
+        const suggestionsContainer = document.getElementById('suggestions-container');
+        if (!suggestionsContainer) return;
+        
+        suggestionsContainer.innerHTML = '';
+        
+        suggestions.forEach(suggestion => {
+            const button = document.createElement('button');
+            button.classList.add('suggestion-btn');
+            button.textContent = suggestion;
             
-            // Send welcome message
-            this.addBotMessage("Hi there! I'm Vivian, your mental health companion. How are you feeling today?");
+            button.addEventListener('click', function() {
+                // Fill the input with the suggestion
+                const messageInput = document.getElementById('message-input');
+                messageInput.value = suggestion;
+                messageInput.focus();
+                
+                // Trigger auto-resize
+                const event = new Event('input');
+                messageInput.dispatchEvent(event);
+            });
+            
+            suggestionsContainer.appendChild(button);
+        });
+        
+        suggestionsContainer.style.display = 'flex';
+    }
+    
+    // Function to save conversation to local storage
+    function saveConversation(userMessage, assistantMessage) {
+        let conversation = JSON.parse(localStorage.getItem('vivian_conversation') || '[]');
+        conversation.push(
+            { role: 'user', content: userMessage },
+            { role: 'assistant', content: assistantMessage }
+        );
+        
+        // Limit conversation history to last 50 messages
+        if (conversation.length > 50) {
+            conversation = conversation.slice(-50);
+        }
+        
+        localStorage.setItem('vivian_conversation', JSON.stringify(conversation));
+    }
+    
+    // Function to load conversation from local storage
+    function loadConversation() {
+        const conversation = JSON.parse(localStorage.getItem('vivian_conversation') || '[]');
+        
+        if (conversation.length > 0) {
+            conversation.forEach(message => {
+                addMessage(message.content, message.role);
+            });
         }
     }
     
-    showProfileModal() {
-        // Create modal
-        const modal = document.createElement('div');
-        modal.className = 'modal';
-        modal.innerHTML = `
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Your Profile</h2>
-                    <button class="close-btn">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="name-input">Your Name</label>
-                        <input type="text" id="name-input" value="${this.userName}" placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <label>Preferences</label>
-                        <div class="checkbox-group">
-                            <label>
-                                <input type="checkbox" id="preference-cbt" ${localStorage.getItem('preference-cbt') === 'true' ? 'checked' : ''}>
-                                Include CBT techniques
-                            </label>
-                        </div>
-                        <div class="checkbox-group">
-                            <label>
-                                <input type="checkbox" id="preference-mindfulness" ${localStorage.getItem('preference-mindfulness') === 'true' ? 'checked' : ''}>
-                                Focus on mindfulness
-                            </label>
-                        </div>
-                        <div class="checkbox-group">
-                            <label>
-                                <input type="checkbox" id="preference-practical" ${localStorage.getItem('preference-practical') === 'true' ? 'checked' : ''}>
-                                Provide practical exercises
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="save-btn">Save Profile</button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(modal);
-        
-        // Handle close button
-        modal.querySelector('.close-btn').addEventListener('click', () => {
-            modal.remove();
-        });
-        
-        // Handle save button
-        modal.querySelector('.save-btn').addEventListener('click', () => {
-            const name = document.getElementById('name-input').value.trim() || 'there';
-            this.userName = name;
-            localStorage.setItem('userName', name);
-            
-            // Save preferences
-            const preferenceCbt = document.getElementById('preference-cbt').checked;
-            const preferenceMindfulness = document.getElementById('preference-mindfulness').checked;
-            const preferencePractical = document.getElementById('preference-practical').checked;
-            
-            localStorage.setItem('preference-cbt', preferenceCbt);
-            localStorage.setItem('preference-mindfulness', preferenceMindfulness);
-            localStorage.setItem('preference-practical', preferencePractical);
-            
-            // Update profile on server
-            this.updateProfile();
-            
-            // Close modal
-            modal.remove();
-            showToast('Profile updated successfully');
-        });
-        
-        // Close modal on outside click
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.remove();
-            }
-        });
-    }
-    
-    async updateProfile() {
+    // Health check
+    async function checkHealth() {
         try {
-            const preferences = {
-                cbt: localStorage.getItem('preference-cbt') === 'true',
-                mindfulness: localStorage.getItem('preference-mindfulness') === 'true',
-                practical_exercises: localStorage.getItem('preference-practical') === 'true'
-            };
-            
-            await fetch(`${API_BASE_URL}/api/profile`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user_id: this.userId,
-                    name: this.userName,
-                    preferences: preferences
-                })
-            });
+            const response = await fetch(`${API_BASE_URL}/api/health`);
+            if (response.ok) {
+                console.log('Backend is healthy');
+                return true;
+            }
+            return false;
         } catch (error) {
-            console.error('Error updating profile:', error);
+            console.error('Health check failed:', error);
+            return false;
         }
     }
     
-    toggleVoiceInput() {
-        // Check if browser supports speech recognition
-        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-            showToast('Voice input is not supported in your browser', 'error');
-            return;
+    // Initialize chat
+    async function initChat() {
+        const isHealthy = await checkHealth();
+        
+        if (!isHealthy) {
+            showToast('Unable to connect to Vivian. Some features may be limited.', 'error');
         }
         
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-        const recognition = new SpeechRecognition();
+        // Load conversation history
+        loadConversation();
         
-        // Configure recognition
-        recognition.continuous = false;
-        recognition.interimResults = true;
-        
-        // Start listening
-        recognition.start();
-        this.voiceInputBtn.classList.add('active');
-        this.voiceInputBtn.innerHTML = '<i class="fas fa-microphone-slash"></i>';
-        showToast('Listening...');
-        
-        // Handle results
-        recognition.onresult = (event) => {
-            const transcript = Array.from(event.results)
-                .map(result => result[0].transcript)
-                .join('');
-            
-            this.messageInput.value = transcript;
-        };
-        
-        // Handle end
-        recognition.onend = () => {
-            this.voiceInputBtn.classList.remove('active');
-            this.voiceInputBtn.innerHTML = '<i class="fas fa-microphone"></i>';
-        };
-        
-        // Handle errors
-        recognition.onerror = (event) => {
-            console.error('Speech recognition error:', event.error);
-            this.voiceInputBtn.classList.remove('active');
-            this.voiceInputBtn.innerHTML = '<i class="fas fa-microphone"></i>';
-            showToast('Voice input error. Please try again.', 'error');
-        };
-        
-        // Stop listening when button is clicked again
-        this.voiceInputBtn.onclick = () => {
-            recognition.stop();
-            this.voiceInputBtn.onclick = () => this.toggleVoiceInput();
-        };
+        // If no conversation history, add welcome message
+        const chatMessages = document.getElementById('chat-messages');
+        if (chatMessages.children.length === 0) {
+            const welcomeMessage = "Hello! I'm Vivian, your mental health companion. How are you feeling today?";
+            addMessage(welcomeMessage, 'assistant');
+        }
     }
     
-    // Comfort zone functions
-    startBreathingExercise() {
-        this.addBotMessage("Let's practice a simple breathing exercise. Find a comfortable position and follow along:\n\n1. Breathe in slowly through your nose for 4 counts\n2. Hold your breath for 4 counts\n3. Exhale through your mouth for 6 counts\n4. Repeat 5 times\n\nWould you like me to guide you through this exercise?");
-    }
-    
-    playRelaxingSounds() {
-        this.addBotMessage("Relaxing sounds can help calm your mind. Here are some options:\n\n1. Rain sounds\n2. Ocean waves\n3. Forest ambience\n4. Gentle piano\n\nWhich would you like to listen to?");
-    }
-    
-    startGroundingExercise() {
-        this.addBotMessage("Let's try a grounding exercise called the 5-4-3-2-1 technique:\n\n- Acknowledge 5 things you can see\n- Acknowledge 4 things you can touch\n- Acknowledge 3 things you can hear\n- Acknowledge 2 things you can smell\n- Acknowledge 1 thing you can taste\n\nWould you like to try this together?");
-    }
-    
-    startGuidedMeditation() {
-        this.addBotMessage("I can guide you through a brief meditation. Find a quiet place where you won't be disturbed and sit comfortably. Close your eyes and take a deep breath in... and out. Begin to focus on your breath, noticing the sensation as you breathe in and out. Would you like me to continue with a 5-minute guided meditation?");
-    }
-    
-    trackMood(mood) {
-        // Save mood to local storage
-        const moodHistory = JSON.parse(localStorage.getItem('moodHistory') || '[]');
-        moodHistory.push({
-            mood: mood,
-            timestamp: new Date().toISOString()
-        });
-        localStorage.setItem('moodHistory', JSON.stringify(moodHistory));
-        
-        // Show confirmation
-        showToast(`Mood tracked: ${mood}`);
-        
-        // Send message about mood
-        this.messageInput.value = `I'm feeling ${mood} today.`;
-        this.sendMessage();
-    }
-}
-
-// Initialize the chat app when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    const app = new VivianChat();
-    
-    // Check server health
-    fetch(`${API_BASE_URL}/api/health`)
-        .catch(() => {
-            showToast('Unable to connect to server. Please try again later.', 'error');
-        });
+    // Initialize the chat
+    initChat();
 });
-
-// Add CSS styles dynamically
-const addStyles = () => {
-    const style = document.createElement('style');
-    style.textContent = `
-        /* Modal styles */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        
-        .modal-content {
-            background-color: var(--bg-color);
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .modal-body {
-            padding: 20px;
-        }
-        
-        .modal-footer {
-            padding: 15px 20px;
-            border-top: 1px solid var(--border-color);
-            text-align: right;
-        }
-        
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--text-color);
-        }
-        
-        .save-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        .form-group input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-        }
-        
-        .checkbox-group {
-            margin-bottom: 8px;
-        }
-        
-        /* Toast styles */
-        .toast-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        
-        .toast {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            border-radius: 5px;
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            animation: fadeIn 0.3s ease-in;
-        }
-        
-        .toast-info {
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .toast-error {
-            border-left: 4px solid #ff4d4d;
-        }
-        
-        .toast-content {
-            display: flex;
-            align-items: center;
-        }
-        
-        .toast-content i {
-            margin-right: 10px;
-        }
-        
-        .toast-fade-out {
-            animation: fadeOut 0.3s ease-out forwards;
-        }
-        
-        /* Suggestions styles */
-        .suggestions {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: var(--bg-color-alt);
-            border-radius: 10px;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .suggestions-title {
-            font-size: 14px;
-            margin-bottom: 8px;
-            color: var(--text-color-light);
-        }
-        
-        .suggestions-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .suggestion-btn {
-            background-color: var(--primary-color-light);
-            color: var(--primary-color);
-            border: none;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        
-        .suggestion-btn:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        /* Typing indicator */
-        .typing-dots {
-            display: flex;
-            padding: 10px;
-        }
-        
-        .typing-dots span {
-            height: 8px;
-            width: 8px;
-            margin: 0 2px;
-            background-color: var(--text-color-light);
-            border-radius: 50%;
-            display: inline-block;
-            animation: bounce 1.5s infinite ease-in-out;
-        }
-        
-        .typing-dots span:nth-child(1) { animation-delay: 0s; }
-        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-        
-        @keyframes bounce {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-5px); }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(-10px); }
-        }
-        
-        /* Sound visualizer animation */
-        .sound-bar {
-            animation: soundWave 1s infinite ease-in-out;
-        }
-        
-        .sound-bar:nth-child(1) { animation-delay: 0s; }
-        .sound-bar:nth-child(2) { animation-delay: 0.1s; }
-        .sound-bar:nth-child(3) { animation-delay: 0.2s; }
-        .sound-bar:nth-child(4) { animation-delay: 0.3s; }
-        .sound-bar:nth-child(5) { animation-delay: 0.4s; }
-        .sound-bar:nth-child(6) { animation-delay: 0.5s; }
-        .sound-bar:nth-child(7) { animation-delay: 0.6s; }
-        .sound-bar:nth-child(8) { animation-delay: 0.7s; }
-        .sound-bar:nth-child(9) { animation-delay: 0.8s; }
-        .sound-bar:nth-child(10) { animation-delay: 0.9s; }
-        
-        @keyframes soundWave {
-            0%, 100% { height: 5px; }
-            50% { height: 20px; }
-        }
-    `;
-    document.head.appendChild(style);
-};
-
-// Add styles
-addStyles(); 
-
-</script>
+    </script>
 </body>
 </html>
